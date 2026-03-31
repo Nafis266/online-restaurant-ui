@@ -1,32 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Table Reservation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zaika — Reservation</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body { padding-top: 72px; }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>Restaurant</h1>
-  <nav>
-    <a href="index2.html">Menu</a>
-    <a href="reservation.html">Reservation</a>
-    <a href="feedback.html">Feedback</a>
-  </nav>
-</header>
+  <div class="page-hero">
+    <h1>Reserve a Table</h1>
+    <p>We'll hold a seat for you</p>
+  </div>
 
-<h2>Reserve a Table</h2>
+  <div class="form-page-body">
+    <div class="form-info">
+      We accept reservations from 12:00 PM – 10:00 PM, seven days a week.
+      For parties of 8 or more, please call us directly.
+    </div>
 
-<form class="form" onsubmit="reserveTable(event)">
-  <input type="text" placeholder="Full Name" required>
-  <input type="tel" placeholder="Phone Number" required>
-  <input type="date" required>
-  <input type="time" required>
-  <input type="number" placeholder="Number of Guests" required>
-  <button type="submit">Reserve</button>
-</form>
+    <div class="form-card">
+      <form onsubmit="handleReservation(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-name">Full Name</label>
+            <input id="res-name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="res-phone">Phone</label>
+            <input id="res-phone" type="tel" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+        </div>
 
-<script src="script.js"></script>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-date">Date</label>
+            <input id="res-date" type="date" required>
+          </div>
+          <div class="form-group">
+            <label for="res-time">Time</label>
+            <select id="res-time" required>
+              <option value="">Select a time</option>
+              <option>12:00 PM</option>
+              <option>1:00 PM</option>
+              <option>2:00 PM</option>
+              <option>7:00 PM</option>
+              <option>7:30 PM</option>
+              <option>8:00 PM</option>
+              <option>8:30 PM</option>
+              <option>9:00 PM</option>
+              <option>9:30 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="res-guests">Number of Guests</label>
+          <select id="res-guests" required>
+            <option value="">Select guests</option>
+            <option>1 Guest</option>
+            <option>2 Guests</option>
+            <option>3 Guests</option>
+            <option>4 Guests</option>
+            <option>5 Guests</option>
+            <option>6 Guests</option>
+            <option>7 Guests</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="res-notes">Special Requests</label>
+          <textarea id="res-notes" placeholder="Dietary requirements, celebrations, seating preferences…"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">Confirm Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>© 2025 <strong>Zaika</strong> — Authentic Indian Cuisine</footer>
+
+  <script src="nav.js"></script>
+  <script src="script.js"></script>
+  <script src="reservation.js"></script>
 </body>
 </html>
-

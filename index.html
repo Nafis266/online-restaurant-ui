@@ -1,36 +1,148 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Restaurant - Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
   <link rel="stylesheet" href="style.css">
-</head>
-<body class="login-page">
+  <style>
+    body { background: var(--charcoal); }
 
-<div class="login-container">
-  <div class="login-logo">
-    <h1>Restaurant</h1>
-    <p>Authentic Indian Cuisine</p>
+    .login-wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .login-left {
+      flex: 1;
+      background: url('images/bg2.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-left::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-color: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+    .login-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      position: relative;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    }
+    .login-tagline em { color: var(--saffron-light); font-style: italic; }
+    .login-ornament {
+      position: absolute;
+      bottom: 3rem; right: 3rem;
+      width: 120px; height: 120px;
+      border: 1px solid rgba(200,96,26,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .login-ornament::before {
+      content: '';
+      width: 85px; height: 85px;
+      border: 1px solid rgba(200,96,26,0.12);
+      border-radius: 50%;
+    }
+
+    /* ── Right panel ── */
+    .login-right {
+      width: 480px;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem;
+    }
+    .login-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--saffron);
+      margin-bottom: 0.3rem;
+    }
+    .login-subtitle {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+    .login-divider {
+      width: 40px; height: 2px;
+      background: var(--saffron);
+      margin-bottom: 2.5rem;
+    }
+    .login-welcome {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .login-footer-text {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 1.5rem;
+    }
+    .login-footer-text a {
+      color: var(--saffron);
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .login-left { display: none; }
+      .login-right { width: 100%; padding: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrapper">
+
+    <div class="login-left">
+      <div class="login-tagline">
+        Serving Moments<br>For every <em>You</em><br>
+      </div>
+      <div class="login-ornament"></div>
+    </div>
+
+    <div class="login-right">
+      <div class="login-logo">Zaika</div>
+      <p class="login-subtitle">Authentic Indian Cuisine</p>
+      <div class="login-divider"></div>
+      <p class="login-welcome">Welcome. Please enter your details to continue.</p>
+
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input id="username" type="text" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn-primary">Enter Restaurant</button>
+      </form>
+
+    </div>
+
   </div>
 
-  <div class="decorative-line"></div>
-
-  <p class="login-welcome">Welcome back! Please enter your details to continue</p>
-
-  <form onsubmit="enterSite(event)">
-    <div class="login-form-group">
-      <label>Username</label>
-      <input type="text" placeholder="Enter your username" required>
-    </div>
-
-    <div class="login-form-group">
-      <label>Password</label>
-      <input type="password" placeholder="Enter your password" required>
-    </div>
-
-    <button type="submit" class="login-button">Enter</button>
-  </form>
-</div>
-
-<script src="script.js"></script>
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+      window.location.href = 'menu.html';
+    }
+  </script>
 </body>
 </html>

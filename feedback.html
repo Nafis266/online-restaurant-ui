@@ -1,37 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Customer Feedback</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zaika — Feedback</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body { padding-top: 72px; }
+
+    .star-rating {
+      display: flex;
+      gap: 6px;
+      margin-top: 0.4rem;
+    }
+    .star {
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--cream-dark);
+      transition: color 0.15s, transform 0.1s;
+      user-select: none;
+      line-height: 1;
+    }
+    .star:hover,
+    .star.active {
+      color: var(--gold-light);
+      transform: scale(1.15);
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>Restaurant</h1>
-  <nav>
-    <a href="index2.html">Menu</a>
-    <a href="reservation.html">Reservation</a>
-    <a href="feedback.html">Feedback</a>
-  </nav>
-</header>
+  <div class="page-hero">
+    <h1>Share Your Experience</h1>
+    <p>Your thoughts help us grow</p>
+  </div>
 
-<h2>Customer Feedback</h2>
+  <div class="form-page-body">
+    <div class="form-card">
+      <form onsubmit="handleFeedback(event)">
+        <div class="form-group">
+          <label for="fb-name">Your Name</label>
+          <input id="fb-name" type="text" placeholder="How shall we address you?" required>
+        </div>
 
-<form class="form" onsubmit="submitFeedback(event)">
-  <input type="text" placeholder="Your Name" required>
-  <select required>
-    <option value="">Rating</option>
-    <option>⭐</option>
-    <option>⭐⭐</option>
-    <option>⭐⭐⭐</option>
-    <option>⭐⭐⭐⭐</option>
-    <option>⭐⭐⭐⭐⭐</option>
-  </select>
-  <textarea placeholder="Your Feedback" required></textarea>
-  <button type="submit">Submit Feedback</button>
-</form>
+        <div class="form-group">
+          <label>Overall Rating</label>
+          <div class="star-rating" id="stars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+        </div>
 
-<script src="script.js"></script>
+        <div class="form-group">
+          <label for="fb-text">Your Feedback</label>
+          <textarea id="fb-text" placeholder="Tell us about your visit, the food, the service…" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">Submit Feedback</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>© 2025 <strong>Zaika</strong> — Authentic Indian Cuisine</footer>
+
+  <script src="nav.js"></script>
+  <script src="script.js"></script>
+  <script src="feedback.js"></script>
 </body>
 </html>
-
