@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer Feedback</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Restaurant</h1>
+  <nav>
+    <a href="index.html">Menu</a>
+    <a href="reservation.html">Reservation</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<h2>Customer Feedback</h2>
+
+<form class="form" onsubmit="submitFeedback(event)">
+  <input type="text" placeholder="Your Name" required>
+  <select required>
+    <option value="">Rating</option>
+    <option>⭐</option>
+    <option>⭐⭐</option>
+    <option>⭐⭐⭐</option>
+    <option>⭐⭐⭐⭐</option>
+    <option>⭐⭐⭐⭐⭐</option>
+  </select>
+  <textarea placeholder="Your Feedback" required></textarea>
+  <button type="submit">Submit Feedback</button>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
+

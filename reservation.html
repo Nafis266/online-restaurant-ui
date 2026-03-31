@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Table Reservation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Restaurant</h1>
+  <nav>
+    <a href="index.html">Menu</a>
+    <a href="reservation.html">Reservation</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<h2>Reserve a Table</h2>
+
+<form class="form" onsubmit="reserveTable(event)">
+  <input type="text" placeholder="Full Name" required>
+  <input type="tel" placeholder="Phone Number" required>
+  <input type="date" required>
+  <input type="time" required>
+  <input type="number" placeholder="Number of Guests" required>
+  <button type="submit">Reserve</button>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
+

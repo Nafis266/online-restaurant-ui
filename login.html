@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurant - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+<div class="login-container">
+  <div class="login-logo">
+    <h1>Restaurant</h1>
+    <p>Authentic Indian Cuisine</p>
+  </div>
+
+  <div class="decorative-line"></div>
+
+  <p class="login-welcome">Welcome back! Please enter your details to continue</p>
+
+  <form onsubmit="enterSite(event)">
+    <div class="login-form-group">
+      <label>Username</label>
+      <input type="text" placeholder="Enter your username" required>
+    </div>
+
+    <div class="login-form-group">
+      <label>Password</label>
+      <input type="password" placeholder="Enter your password" required>
+    </div>
+
+    <button type="submit" class="login-button">Enter</button>
+  </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
