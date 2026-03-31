@@ -46,6 +46,6 @@ function submitFeedback(e) {
 
 function enterSite(e) {
   e.preventDefault();
-  window.location.href = "index.html";
+  window.location.href = "index2.html";
 }
 
