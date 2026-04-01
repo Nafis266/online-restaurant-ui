@@ -79,8 +79,7 @@ function toggleCart() {
   document.getElementById('cart-overlay').classList.toggle('open');
   renderCartItems();
 }
-
-/* ─── TOAST ─── */
+// toast
 let toastTimer;
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -91,7 +90,6 @@ function showToast(msg) {
   toastTimer = setTimeout(() => { t.style.display = 'none'; }, 3000);
 }
 
-/* ─── ACTIVE NAV LINK ─── */
 function setActiveNav() {
   const page = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a').forEach(a => {
@@ -100,8 +98,79 @@ function setActiveNav() {
   });
 }
 
-/* ─── ON LOAD ─── */
 document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   setActiveNav();
 });
+(function () {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x      = Math.random() * (W || 600);
+      this.y      = init ? Math.random() * (H || 800) : (H || 800) + 10;
+      this.size   = Math.random() * 4 + 1.5;
+      this.speedY = -(Math.random() * 0.6 + 0.2);
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.alpha  = Math.random() * 0.6 + 0.2;
+      this.decay  = Math.random() * 0.002 + 0.001;
+      this.type   = ['dot','dot','dot','leaf','ring'][Math.floor(Math.random() * 5)];
+      const palette = ['#d4a254','#e8c17a','#b8860b','#fff8f0','#c8a96e'];
+      this.color  = palette[Math.floor(Math.random() * palette.length)];
+    }
+    update() {
+      this.y      += this.speedY;
+      this.alpha  -= this.decay;
+      if (this.alpha <= 0 || this.y < -20) this.reset(false);
+    }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle   = this.color;
+      ctx.strokeStyle = this.color;
+      ctx.translate(this.x, this.y);
+      if (this.type === 'dot') {
+        ctx.beginPath();
+        ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (this.type === 'ring') {
+        ctx.beginPath();
+        ctx.arc(0, 0, this.size * 1.5, 0, Math.PI * 2);
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      } else if (this.type === 'leaf') {
+        ctx.beginPath();
+        ctx.ellipse(0, 0, this.size * 2, this.size, 0, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+  }
+
+  function resize() {
+    const parent = canvas.parentElement;
+    W = canvas.width  = parent.offsetWidth;
+    H = canvas.height = parent.offsetHeight;
+  }
+
+  const particles = Array.from({ length: 60 }, () => new Particle());
+
+  (function loop() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  })();
+
+  window.addEventListener('resize', resize);
+
+  // KEY FIX — wait for full layout before reading dimensions
+  if (document.readyState === 'complete') {
+    resize();
+  } else {
+    window.addEventListener('load', resize);
+  }
+})();
