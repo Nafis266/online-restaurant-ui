@@ -32,7 +32,7 @@ const MENU_ITEMS = [
   {
     name: 'Dal Makhani',
     price: 130,
-    desc: 'Black lentils simmered overnight with butter and cream — a North Indian comfort classic.',
+    desc: 'Black lentils simmered overnight with butter and cream.. a North Indian comfort classic.',
     tag: 'veg',
   },
 ];
